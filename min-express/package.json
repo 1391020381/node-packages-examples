@@ -10,7 +10,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.3"
+    "@godaddy/terminus": "^4.10.2",
+    "express": "^4.17.3",
+    "overload-protection": "^1.2.3"
   },
   "devDependencies": {
     "nodemon": "^2.0.15"

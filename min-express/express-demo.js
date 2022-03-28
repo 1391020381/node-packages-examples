@@ -6,10 +6,11 @@ app.use(function (req, res, next) {
     console.log('Time:', Date.now())
     next()
 })
-app.get('/', (req, res) => {
+
+app.use('/', function (req, res) {
+    console.log(req.path, 'path')
     res.end('Hello,World!')
 })
-
 app.listen(port, () => {
-    console.log('Example app listening on port ${port}')
+    console.log(`Example app listening on port ${port}`)
 })
