@@ -45,3 +45,21 @@
  * ecosystem.config.js
  * CMD ['pm2-runtime','ecosystem.config.js']
 
+
+ # Production best practices: performance and reliability
+ 1. Things to do in your code(the dev part)
+    * Use gzip compression
+    * Dont't use synchronous functions
+    * Do logging correctly
+    * Handle exceptions properly
+ 2.  Things to do in your environment / setup (the ops part)
+    * Set NODE_ENV to “production”
+    * Ensure your app automatically restarts
+    * Run your app in a cluster
+    * Cache request results
+    * Use a load balancer
+    * Use a reverse proxy
+
+
+# Production Best Practices: Security   
+
