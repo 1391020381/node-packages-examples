@@ -6,7 +6,7 @@
         "node_modules"
     ],
     "watch": [
-        "code/c6"
+        "code/c7"
     ],
     "exec": "npm start",
     "ext": "ts"
