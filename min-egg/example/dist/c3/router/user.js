@@ -36,18 +36,19 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var Koa = require("koa");
-var Router = require("koa-router");
-var app = new Koa;
-var route = new Router;
-route.get('/', function (ctx, next) { return __awaiter(void 0, void 0, void 0, function () {
+var user = function (ctx, next) { return __awaiter(void 0, void 0, void 0, function () {
     return __generator(this, function (_a) {
-        ctx.body = 'hello ts-koa！！！！';
+        ctx.body = 'hello,ts-koa,user';
         return [2 /*return*/];
     });
-}); });
-app.use(route.routes());
-app.listen(3000, '127.0.0.1', function () {
-    console.log('服务器在运行');
-});
-//# sourceMappingURL=app.js.map
+}); };
+var userInfo = function (ctx, next) { return __awaiter(void 0, void 0, void 0, function () {
+    return __generator(this, function (_a) {
+        ctx.body = 'hello,userInfo';
+        return [2 /*return*/];
+    });
+}); };
+exports.default = {
+    'get /': user,
+    'get /userInfo': userInfo
+};
