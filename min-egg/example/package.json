@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "tsc && NODE_ENV=development node ./dist/c3/app.js ",
+    "start": "tsc && NODE_ENV=development node ./dist/c5/app.js ",
     "dev": "./node_modules/nodemon/bin/nodemon.js"
   },
   "author": "",
