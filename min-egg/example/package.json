@@ -1,16 +1,12 @@
 {
-  "name": "min-egg",
+  "name": "min-egg-example",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "directories": {
-    "example": "example"
-  },
   "scripts": {
     "start": "tsc && NODE_ENV=development node ./dist/app.js ",
     "dev": "./node_modules/nodemon/bin/nodemon.js"
   },
-  "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
