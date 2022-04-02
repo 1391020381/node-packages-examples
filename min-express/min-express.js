@@ -151,3 +151,26 @@ class Layer {
 }
 
 module.exports = () => new Application()
+
+
+// const express = require('express')
+// const app = express();
+// const router = express.Router();
+// router.get('/hello', (req, res, next) = {
+
+// })
+
+// router.post('/abc', (req, res, next) => {
+
+// })
+// // router.get()  router.post()  在 Router 实例上添加 route
+// app.use('/', router);
+
+// // 应用中间件
+// app.use((req, res, next) => {
+
+// })
+// app.get((req, res, next) => {
+
+// })
+
