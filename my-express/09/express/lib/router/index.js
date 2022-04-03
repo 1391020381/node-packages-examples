@@ -4,7 +4,7 @@ const Layer = require('./layer')
 const Route = require('./route')
 const { type } = require('os')
 
-function Router () {
+function Router() {
   this.stack = []
 }
 
@@ -26,7 +26,7 @@ Router.prototype.handle = function (req, res) {
     if (index >= this.stack.length) {
       return res.end(`Can not get ${pathname}`)
     }
-    
+
     const layer = this.stack[index++]
     const match = layer.match(pathname)
     if (match) {
@@ -42,7 +42,7 @@ Router.prototype.handle = function (req, res) {
   }
 
   next()
-  
+
   // const layer = this.stack.find(layer => {
   //   // const keys = []
   //   // const regexp = pathRegexp(layer.path, keys, {})
@@ -68,6 +68,8 @@ Router.prototype.use = function (path, handlers) {
     const layer = new Layer(path, handler)
     layer.isUseMiddleware = true
     this.stack.push(layer)
+
+    // layer与 layer.route。 最后递归调用的时候，都会调用 layer.hanlder 只是 layer.route的 调用的是 route.dispatch 
   })
 }
 

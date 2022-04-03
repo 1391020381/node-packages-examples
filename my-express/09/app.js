@@ -2,10 +2,15 @@
  * - 实现 use 方法中间件
  */
 
-const express = require('./express')
+const express = require('express')
 
 const app = express()
-
+// const router = express.Router()
+// console.log('router-1:', router, typeof router)
+// router.get('/express-router', (req, res, next) => {
+//   res.end('express-router')
+// })
+// console.log('router-2:', router)
 // 不验证请求方法和请求路径
 // app.use(function (req, res, next) {
 //   res.end('hello')
