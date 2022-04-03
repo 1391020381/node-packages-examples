@@ -3,16 +3,21 @@ const methods = require('methods')
 const Layer = require('./layer')
 const Route = require('./route')
 
-function Router () {
+function Router() {
   this.stack = []
 }
 
 methods.forEach(method => {
   Router.prototype[method] = function (path, handlers) {
     const route = new Route()
+
+    // layer的 handler 就是 route的dispacth函数,递归调用 route的 stack 中间件
+    // 这样 其实第一层的 layer.handler 没有具体的 处理函数，而是触发调用的函数
     const layer = new Layer(path, route.dispatch.bind(route))
+    // 将route 挂载到 layer上
     layer.route = route
     this.stack.push(layer)
+    // 将处理函数挂在到 layer.route 中。  path handlers
     route[method](path, handlers)
   }
 })
@@ -25,7 +30,7 @@ Router.prototype.handle = function (req, res) {
     if (index >= this.stack.length) {
       return res.end(`Can not get ${pathname}`)
     }
-    
+
     const layer = this.stack[index++]
     const match = layer.match(pathname)
     if (match) {
@@ -41,7 +46,7 @@ Router.prototype.handle = function (req, res) {
   }
 
   next()
-  
+
   // const layer = this.stack.find(layer => {
   //   // const keys = []
   //   // const regexp = pathRegexp(layer.path, keys, {})
