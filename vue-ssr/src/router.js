@@ -5,18 +5,18 @@ import Foo from './components/Foo.vue'
 import Bar from './components/Bar.vue'
 Vue.use(VueRouter)
 
-export default ()=>{
+export default () => {
     const router = new VueRouter({
-        mode:'history',
-        routes:[
+        mode: 'history',
+        routes: [
             {
-                path:'/',
-                component:Foo
+                path: '/',
+                component: Foo
             },
             {
-                path:'/bar',
+                path: '/bar',
                 // component:Bar
-                component:()=> import('./components/Bar.vue')
+                component: () => import('./components/Bar.vue')
             }
         ]
     })

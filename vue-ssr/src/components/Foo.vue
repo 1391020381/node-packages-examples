@@ -23,7 +23,7 @@ export default {
   },
   created() {},
   mounted() {
-    this.$store.dispatch('changeName')
+    // this.$store.dispatch('changeName')
   },
   activited() {},
   methods: {
