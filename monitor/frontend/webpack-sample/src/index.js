@@ -1,8 +1,8 @@
 console.log('hello world..')
 
-function uploadError({ lineno, colno, error: { stack }, timeStamp, message,filename }) {
+function uploadError({ lineno, colno, error: { stack }, timeStamp, message, filename }) {
     // 过滤
-    const info = { lineno, colno, stack, timeStamp, message ,filename}
+    const info = { lineno, colno, stack, timeStamp, message, filename }
 
     console.log('error', info, JSON.stringify(info))
     const str = new Buffer(JSON.stringify(info)).toString("base64");
@@ -19,7 +19,9 @@ window.addEventListener('error', errorInfo => {
     uploadError(errorInfo)
     return true
 }, true)
-
+// window.onerror(onerror => {
+//     console.log('onerror:', onerror)
+// })
 setTimeout(() => {
     xxx(1223)
 }, 1000)
