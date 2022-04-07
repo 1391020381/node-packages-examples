@@ -7,20 +7,21 @@ const resolve = (dir) => {
     return path.resolve(__dirname, dir)
 }
 
-module.exports = merge(base,{
-    entry:{
-        server:resolve('../src/server.entry.js')
+module.exports = merge(base, {
+    entry: {
+        server: resolve('../src/server.entry.js')
     },
-    target:'node',
-    output:{
-        libraryTarget:'commonjs2' // 把最终的结果导出到 module.exports
+    target: 'node',
+    devtool: 'source-map',
+    output: {
+        libraryTarget: 'commonjs2' // 把最终的结果导出到 module.exports
     },
-    plugins:[
+    plugins: [
         new ServerRender(),
         new HtmlWebpackPlugin({
-            filename:'index.ssr.html',
-            template:resolve('../public/index.ssr.html'),
-            excludeChunks:['server'] // 排除某个模块
+            filename: 'index.ssr.html',
+            template: resolve('../public/index.ssr.html'),
+            excludeChunks: ['server'] // 排除某个模块
         })
     ]
 })

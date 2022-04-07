@@ -7,15 +7,16 @@ const resolve = (dir) => {
     return path.resolve(__dirname, dir)
 }
 
-module.exports = merge(base,{
-    entry:{
-        client:resolve('../src/client-entry.js')
+module.exports = merge(base, {
+    entry: {
+        client: resolve('../src/client-entry.js')
     },
-    plugins:[
+    devtool: 'source-map',
+    plugins: [
         new ClientServerRender(),
         new HtmlWebpackPlugin({
-            filename:'index.html',
-            template:resolve('../public/index.html')
+            filename: 'index.html',
+            template: resolve('../public/index.html')
         })
     ]
 })
