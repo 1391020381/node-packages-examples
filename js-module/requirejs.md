@@ -29,3 +29,6 @@
     * 当依赖不为空，就执行 mod.enable()
     * enable 其实就是拿到依赖，循环异步加载
     * 加载完成 如果是 define 定义的模块 其实就是执行 define函数 也就是 保存 模块 并返回 内部实例
+
+    
+    * 在Module实例 enable 加载依赖，会在依赖的 check
