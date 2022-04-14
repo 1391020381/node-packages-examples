@@ -1,18 +1,3 @@
-
-   
-# First step: Build with Node.js
-FROM node:lts-alpine AS Builder
-WORKDIR /app
-COPY package.json  /app/
-RUN npm install
-COPY . /app
-RUN npm build
-
-# Deliver the dist folder with Nginx
-FROM nginx:stable-alpine
-
-
+FROM nginx
+COPY dist/ /usr/share/nginx/html/
 COPY nginx.conf /etc/nginx/conf.d/default.conf
-COPY --from=Builder /app/dist /usr/share/nginx/html
-RUN   nginx
-EXPOSE 8989
