@@ -1,9 +1,18 @@
-FROM node:10-alpine
 
-ENV PROJECT_ENV production
+   
+# First step: Build with Node.js
+FROM node:lts-alpine AS Builder
+WORKDIR /app
+COPY package.json  /app/
+RUN npm install
+COPY . /app
+RUN npm build
 
-ENV NODE_ENV production
-WORKDIR  /code
-ADD .  /code
-RUN npm install  && npm run build && npm install -g http-server
-EXPOSE 80
+# Deliver the dist folder with Nginx
+FROM nginx:stable-alpine
+
+
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+COPY --from=Builder /app/dist /usr/share/nginx/html
+RUN   nginx
+EXPOSE 8989
