@@ -1,9 +1,9 @@
 /**,
  * @swagger
- * /users:
+ * /api/baseCoinBalance:
  *    post:
  *      tags:
- *      - 用户接口    #接口分类
+ *      - 平台币    #接口分类
  *      summary: 测试1   #接口备注
  *      description: 测试   #接口描述
  *      consumes:
@@ -37,16 +37,3 @@
  *        1001:
  *          description: 获取底层币余额失败
  * */
-
-
-
-
-var express = require('express');
-var router = express.Router();
-
-/* GET users listing. */
-router.get('/', function (req, res, next) {
-  res.send('respond with a resource');
-});
-
-module.exports = router;
