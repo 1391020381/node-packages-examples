@@ -19,8 +19,14 @@
 // 配置信息
 const cfg = { paths: {} }
 let reqCounter = 0
-const registry = {}  // 已经注册的模块
-const defMap = {}  // 缓存加载的模块
+const registry = {}  // 已经注册的模块,  getModule(name)  -> registry -> new Module(name) 
+const defMap = {}  // 缓存加载的模块 单个模块也就是 define定义的模块
+
+// 1. require
+// 2. define
+// 3. getModule -> registry -> new Module(name)
+// 4. Module  name depCount  depsMaps depExports  definedFn  init  enable  check
+
 // 全局 require 方法
 // 扩展配置
 req.config = config => {
@@ -52,8 +58,12 @@ const getModule = name => {
     }
     return mod;
 }
-
+// require() ->  getModule() -> mod.init(deps,callback)
 // 模块加载器
+// 每个module registry[name] 上
+// 每个模块 name  depCount depsMaps  depExports
+// enable -> deps-> forEach -> getModule(name)/loadModule(url)
+// loadModle(url) -> onScriptLoad -> defined ->  getModule-> mod.init(def.deps,callback)
 class Module {
     constructor(name) {
         this.name = name;
@@ -127,6 +137,7 @@ const onScriptLoad = evt => {
     // 获取模块名
     const name = node.getAttribute('data-module');
     const mod = getModule(name)
+    // 加载其他单独模块 也就是 define 定义的模块
     const def = defMap[name]
     mod.init(def.deps, def.callback)
 }
